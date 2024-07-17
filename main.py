@@ -45,8 +45,6 @@ def faturar(base):
 def buscar_elemento(driver, path):
     return driver.find_element('xpath', path)
 
-
-
 def esperar_ficar_visivel(driver, path):
     element = WebDriverWait(driver,5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, path)))
     return element 
@@ -157,8 +155,8 @@ def processo_hub(base):
  
     driver.quit()
     finalizar(base)
- 
- 
+
+# Criar Interface Visual
 root = Tk()
 root.title('Inserir dados do Usuário')
 root.resizable(False, False)
