@@ -80,6 +80,17 @@ def processo_hub(base):
     driver = webdriver.Chrome(service=servico, options=chrome_options)
  
     time.sleep(6)
+
+    # Login
+    driver.get("https://hub.webmotors.com.br/login")
+    buscar_elemento(driver, login_input_email).send_keys(email)
+    buscar_elemento(driver, login_input_senha).send_keys(senha)
+    buscar_elemento(driver, login_submit_button).click()
+    
+    # Caminho do Cadastro
+    element = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div/div/div[1]/a')))
+    element.click()
+    
     for i, cliente in enumerate(relatorio['Cliente']):
         cnpj = str(relatorio.loc[i, 'CNPJ'])
         valor_antigo = float(relatorio.loc[i, 'Total'])
@@ -91,16 +102,6 @@ def processo_hub(base):
             cont = 0
             while cont != 3:
                 try:
-                    # Login
-                    driver.get("https://hub.webmotors.com.br/login")
-                    buscar_elemento(driver, login_input_email).send_keys(email)
-                    buscar_elemento(driver, login_input_senha).send_keys(senha)
-                    buscar_elemento(driver, login_submit_button).click()
-                    
-                    # Caminho do Cadastro
-                    element = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div/div/div/div[1]/a')))
-                    element.click()
-    
                     element = WebDriverWait(driver,5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[1]/nav[2]/div/div[2]/div/ul/li[2]/a')))
                     element.click()
                     buscar_elemento(driver, financeiro_menu_cadastrar_midia_programatica).click()
