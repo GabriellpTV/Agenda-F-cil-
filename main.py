@@ -18,7 +18,6 @@ from tkinter import *
 from tkinter import Tk
 from paths import * 
  
- 
 def last_day_of_month(year, month):
     return calendar.monthrange(year, month)[1]
  
