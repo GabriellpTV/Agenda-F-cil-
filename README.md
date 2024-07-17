@@ -1,7 +1,3 @@
-Aqui está a correção do texto em português:
-
----
-
 # Ideia Geral
 Repositório direcionado a explicar o funcionamento do bot para faturamento dos produtos do Agenda Fácil.
 
